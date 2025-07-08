@@ -30,7 +30,7 @@
   <main>
 
 
-    <img class="mySlides" src="./New folder/Apple Gadgets in Perfect Harmony.png">
+    <img class="mySlides" src="./New folder/Apple Product Showcase.png">
 <img class="mySlides" src="./New folder/Screenshot 2025-07-08 170711.png">
 
 
@@ -116,14 +116,32 @@
       </div>
       <div class="right">
         <p>ادرس </p>
+        <p>بابل , چهارراه شهربانی,بورس مبایل محمودیان ,غرفه سه</p>
       </div>
     </div>
     <!-- by Kasra alitabar 2025 -->
   </footer>
-  <a href="cart.html" class="floating-cart">
+  <a href="#" onclick="toggleCartModal()" class="floating-cart fixed bottom-6 left-6 bg-blue-500 text-white rounded-full p-3 shadow-lg z-50">
   🛒
-  <span id="cart-count">0</span>
+  <span id="cart-count" class="bg-white text-blue-500 text-xs rounded-full px-2 py-0.5 ml-1">0</span>
 </a>
+
+<!-- Modal نمایش سبد خرید -->
+<div id="cartModal" class="fixed inset-0 bg-black bg-opacity-40 hidden justify-center items-center z-50">
+  <div class="bg-white w-11/12 max-w-md rounded-lg p-6">
+    <div class="flex justify-between items-center mb-4">
+      <button onclick="toggleCartModal()" class="close">✖</button>
+    </div>
+    <div id="cartItems" class="space-y-3 max-h-96 overflow-y-auto">
+      <!-- محصولات اینجا میان -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
 
 </body>
 

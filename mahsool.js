@@ -3,19 +3,23 @@ const root = document.getElementById("productDetail");
 
 if (data) {
   root.innerHTML = `
+  <div class="both">
       <div class="left">
         <img src="${data.image}" width="300px" alt="${data.name}" />
       <div/>
       <div class="right">
         <h1>${data.name}</h1>
+              <hr/>
+
         <p>قیمت: ${data.price.toLocaleString()} تومان</p>
-        <label>رنگ:</label>
+        <label> رنگ بندی:</label>
         <select id="colorSelect">
           ${data.colors.map(c => `<option>${c}</option>`).join("")}
         </select>
         <br><br>
         <button onclick="addToCart()">افزودن به سبد خرید</button>
       <div/>
+  </div>
       <a href="cart.html" class="floating-cart">
   🛒
   <span id="cart-count">0</span>

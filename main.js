@@ -21,7 +21,7 @@ function goToProduct(product) {
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("searchInput");
   const productCards = document.querySelectorAll(".card");
-
+  
   searchInput.addEventListener("keyup", () => {
     const searchValue = searchInput.value.trim().toLowerCase();
 
@@ -29,9 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const nameElement = card.querySelector(".name");
 
       if (!nameElement) return;
-
+      
       const productName = nameElement.textContent.trim().toLowerCase();
-
+      
       if (productName.includes(searchValue)) {
         card.style.display = "flex"; // یا block بسته به استایل کارت
       } else {
@@ -41,7 +41,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-  const cart = JSON.parse(localStorage.getItem("cart")) ?? [];
-  document.getElementById("cart-count").textContent = cart.length;
+document.querySelector('.mySlides').addEventListener('click', () => {
+  const target = document.querySelector('.card');
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth' });
+  }
+});
 
- 
+const cart = JSON.parse(localStorage.getItem("cart")) ?? [];
+document.getElementById("cart-count").textContent = cart.length;
+
+
+
+function toggleCartModal() {
+  const modal = document.getElementById("cartModal");
+  modal.classList.toggle("show");
+  renderCartModal();
+}
