@@ -19,3 +19,8 @@ function login() {
     message.textContent = "نام کاربری یا رمز عبور اشتباه است.";
   }
 }
+
+function goToProduct(name, img) {
+  const url = `product.html?name=${encodeURIComponent(name)}&img=${encodeURIComponent(img)}`;
+  window.location.href = url;
+}

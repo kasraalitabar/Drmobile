@@ -1,13 +1,21 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelectorAll(".slide"); // همه‌ی اسلایدها
-  const slidesContainer = document.getElementById("slides");
-  let index = 0;
+var slideIndex = 0;
+carousel();
 
-  setInterval(() => {
-    index = (index + 1) % slides.length;
-    slidesContainer.style.transform = `translateX(-${index * 100}%)`;
-  }, 5000);
-});
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > x.length) {slideIndex = 1}
+  x[slideIndex-1].style.display = "block";
+  setTimeout(carousel, 5000); // Change image every 2 seconds
+}
+function goToProduct(product) {
+  localStorage.setItem("selectedProduct", JSON.stringify(product));
+  window.location.href = "product.html";
+}
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -32,4 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+  const cart = JSON.parse(localStorage.getItem("cart")) ?? [];
+  document.getElementById("cart-count").textContent = cart.length;
+
  

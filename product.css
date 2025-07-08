@@ -1,0 +1,96 @@
+body {
+  font-family: "Tahoma", sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 20px;
+  direction: rtl;
+}
+
+.container {
+  max-width: 900px;
+  background: #fff;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.product-image img {
+  max-width: 350px;
+  border-radius: 10px;
+}
+
+.product-details {
+  flex: 1;
+}
+
+.product-details h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.product-details p {
+  font-size: 18px;
+  color: #444;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.color-select {
+  margin-top: 15px;
+}
+
+#add-to-cart {
+  margin-top: 25px;
+  padding: 12px 24px;
+  background-color: #28a745;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#add-to-cart:hover {
+  background-color: #218838;
+}
+.floating-cart {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 60px;
+  font-size: 24px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 999;
+  transition: background-color 0.3s ease;
+}
+
+.floating-cart:hover {
+  background-color: #2563eb;
+}
+
+#cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 50%;
+}
