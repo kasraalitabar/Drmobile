@@ -55,6 +55,59 @@ document.getElementById("cart-count").textContent = cart.length;
 
 function toggleCartModal() {
   const modal = document.getElementById("cartModal");
-  modal.classList.toggle("show");
-  renderCartModal();
+  modal.classList.toggle("hidden");
+  if (!modal.classList.contains("hidden")) {
+    renderCartModal(); // برای نمایش سبد
+  }
 }
+
+
+
+function renderCartModal() {
+  const container = document.getElementById("cartItems");
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  if (cart.length === 0) {
+    container.innerHTML = "<p class='text-center text-gray-600'>سبد خرید شما خالی است.</p>";
+    return;
+  }
+
+  container.innerHTML = cart.map((item, index) => `
+    <div class="flex items-center justify-between bg-gray-100 p-4 rounded-lg shadow-sm">
+      <div class="flex items-center gap-3">
+        <img src="${item.image}" width="60" class="rounded-md border" />
+        <div>
+          <h4 class="font-semibold">${item.name}</h4>
+          <p class="text-sm text-gray-600">رنگ: <span class="text-black">${item.color}</span></p>
+          <p class="text-sm text-gray-600">پارت نامبر: <span class="text-black">${item.partNumber}</span></p>
+          <p class="text-sm text-gray-600">تعداد: ${item.quantity}</p>
+          <p class="text-sm font-bold text-blue-600">قیمت: ${item.price.toLocaleString()} تومان</p>
+        </div>
+      </div>
+      <button onclick="removeFromCart(${index})" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition">حذف</button>
+    </div>
+  `).join("");
+}
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  document.getElementById("cart-count").textContent = cart.length;
+}
+
+
+function removeFromCart(index) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.splice(index, 1); // حذف آیتم با استفاده از index
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartModal(); // برای به‌روزرسانی لیست
+  updateCartCount(); // تعداد سبد را آپدیت کن
+}
+
+function toggleCartModal() {
+  const modal = document.getElementById("cartModal");
+  modal.classList.toggle("hidden");
+  if (!modal.classList.contains("hidden")) {
+    renderCartModal();
+  }
+}
+
+

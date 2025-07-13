@@ -8,7 +8,7 @@ if (data) {
         <img src="${data.image}" id="mainImage" width="500px" alt="${data.name}" />
         <div class="thumbnail-gallery">
     ${data.gallery.map(img => `
-      <img src="${img}" class="thumbnail" onclick="changeMainImage('${img}')">
+      <img width="500px" src="${img}" class="thumbnail" onclick="changeMainImage('${img}')">
     `).join("")}
   </div>
 </div>
@@ -35,25 +35,39 @@ if (data) {
       </div>
     </div>  
   
-      <a href="cart.html" class="floating-cart">
-        🛒
-        <span id="cart-count">0</span>
-      </a>
+      
       `;
 } else {
   root.innerHTML = "<p>هیچ محصولی انتخاب نشده!</p>";
 }
 
+function changeMainImage(src) {
+  document.getElementById("mainImage").src = src;
+}
+
+
+function showToast(message) {
+  const toast = document.createElement("div");
+  toast.textContent = message;
+  toast.className = "toast-message";
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.remove();
+  }, 2000);
+  // بعد از 3 ثانیه برگشت به صفحه اصلی
+setTimeout(() => {
+  window.location.href = "index.html";
+}, 2500);
+
+}
 function addToCart() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const color = document.getElementById("colorSelect").value;
-    const partNumber = document.getElementById("partNumberSelect").value;
-  const existing = cart.find(p => p.id === data.id && p.color === color);
-  if (existing) {
-    existing.quantity++;
-  } else {
-     const existing = cart.find(p => p.id === data.id && p.color === color && p.partNumber === partNumber);
+  const partNumber = document.getElementById("partNumberSelect").value;
 
+  const existing = cart.find(p => p.id === data.id && p.color === color && p.partNumber === partNumber);
+  
   if (existing) {
     existing.quantity++;
   } else {
@@ -69,59 +83,19 @@ function addToCart() {
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
-  alert(`محصول با رنگ ${color} و Part Number ${partNumber} به سبد خرید اضافه شد.`);
-}
-  }
-  localStorage.setItem("cart", JSON.stringify(cart));
-  alert("محصول با رنگ " + color + " به سبد خرید اضافه شد.");
+
+    showToast(`✅ محصول «${data.name}»  با موفقیت به سبد خرید اضافه شد.`);
 
 
-const cart = JSON.parse(localStorage.getItem("cart")) ?? [];
-document.getElementById("cart-count").textContent = cart.length;
+  // بروزرسانی تعداد سبد خرید
+  document.getElementById("cart-count").textContent = cart.length;
 
-const CART = JSON.parse(localStorage.getItem("cart")) ?? [];
-
-async function getIdProduct(id) {
-  return await fetch(`https://fakestoreapi.com/products/${id}`)
-    .then(res => res.json())
-    .catch(err => console.log(err));
-}
-
-function toggleCartModal() {
-  const modal = document.getElementById("cartModal");
-  modal.classList.toggle("hidden");
-  if (!modal.classList.contains("hidden")) {
-    renderCartModal();
-  }
-}
-
-async function renderCartModal() {
-  const container = document.getElementById("cartItemsContainer");
-  container.innerHTML = "<p>در حال بارگذاری...</p>";
-
-  if (CART.length === 0) {
-    container.innerHTML = "<p>سبد خرید شما خالی است.</p>";
-    return;
-  }
-
-  const items = await Promise.all(CART.map(async cartItem => {
-    const product = await getIdProduct(cartItem.id);
-    return `
-      <div class="border p-2 rounded-md flex items-center gap-3">
-        <img src="${product.image}" class="w-16 h-16 object-contain" />
-        <div>
-          <h4 class="text-sm font-bold">${product.title}</h4>
-          <p class="text-sm">تعداد: ${cartItem.quantity}</p>
-          <p class="text-sm">قیمت: ${product.price}$</p>
-        </div>
-      </div>
-    `;
-  }));
-
-  container.innerHTML = items.join("");
+  // باز کردن modal و نمایش سبد خرید
+  toggleCartModal();
+  renderCartModal();
 }
 
 
-function changeMainImage(src) {
-  document.getElementById("mainImage").src = src;
-}
+
+
+
