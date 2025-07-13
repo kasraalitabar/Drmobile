@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ورود | ثبت نام</title>
-    <link rel="stylesheet" href="rej.css">
-    <script src="script.js"defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ورود | ثبت نام</title>
+  <link rel="stylesheet" href="rej.css">
+  <script src="script.js" defer></script>
 </head>
+
 <body>
-    <div class="login-container">
-    <h2>ورود</h2>
-    <input type="text" id="username" placeholder="نام کاربری">
-    <input type="password" id="password" placeholder="رمز عبور">
-    <button onclick="login()">ورود</button>
-    <p id="message"></p>
-    <a href="">ثبت نام</a>
-  </div>
+  <div class="login-container">
+  <h2>ورود</h2>
+  <input type="text" id="loginUsername" placeholder=" کد ملی">
+  <input type="password" id="loginPassword" placeholder="رمز عبور">
+  <button onclick="login()">ورود</button>
+  <p id="loginMessage"></p>
+  <a href="./prerej.html">ثبت نام </a>
+  <!-- دکمه فراموشی رمز عبور -->
+<button style="background-color: transparent;
+  border: none;
+  color: #272727;
+  cursor: pointer;
+  margin-top: 10px;
+  text-decoration: underline;
+  font-size: 14px;
+" onclick="showResetPassword()">فراموشی رمز عبور</button>
+
+<!-- بخش ریست رمز عبور (در حالت عادی پنهان) -->
+<div id="resetSection" style="display:none; margin-top:10px;">
+  <input type="password" id="newPassword" placeholder="رمز عبور جدید">
+  <button onclick="resetPassword()">ذخیره رمز جدید</button>
+</div>
+
+</div>
 </body>
+
 </html>
