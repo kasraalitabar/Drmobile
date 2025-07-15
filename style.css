@@ -12,6 +12,8 @@ body {
   display: none !important;
 }
 
+
+
 .all{
     display: flex;
     flex-direction: row;
@@ -64,13 +66,20 @@ p{
     gap: 5rem;
 }
 .cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 16px;
   padding: 20px;
   margin-top: 10px;
   background-color: #0d0d0d;
   border-radius: 20px;
+  scroll-snap-type: x mandatory;
+  direction: rtl; /* برای چینش RTL */
+}
+
+.cards::-webkit-scrollbar {
+  display: none;                /* برای Chrome و Safari */
 }
 
 .card {
@@ -83,6 +92,10 @@ p{
   text-align: center;
   transition: transform 0.2s ease;
   z-index: 5555;
+  flex: 0 0 auto;
+  width: 200px;
+  scroll-snap-align: start;
+  
 }
 
 .card:hover {
@@ -174,7 +187,7 @@ p{
   line-height: 60px;
   font-size: 24px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  z-index: 999;
+  z-index: 9999999999999999999;
   transition: background-color 0.3s ease;
 }
 
