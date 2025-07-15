@@ -227,6 +227,8 @@ p{
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgb(228, 228, 228);
+  border-radius: 20px;
 }
 
 /* محتوای کارت محصول داخل مودال */
@@ -234,7 +236,7 @@ p{
   display: flex;
   justify-content: space-between;
   background-color: #f4f4f4;
-  padding: 15px;
+  padding: 10px;
   border-radius: 10px;
   margin-bottom: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -256,7 +258,7 @@ p{
   height: 60px;
   border-radius: 6px;
   object-fit: cover;
-  border: 1px solid #ccc;
+  border: 1px solid #222222;
 }
 
 /* اطلاعات محصول */
@@ -269,13 +271,13 @@ p{
 .cart-item-details p {
   margin: 3px 0;
   font-size: 13px;
-  color: #555;
+  color: #252525;
 }
 
 /* دکمه حذف */
 .delete-btn {
   background-color: #e63946;
-  color: #fff;
+  color: #eb0000;
   padding: 6px 14px;
   border: none;
   border-radius: 6px;
@@ -295,6 +297,7 @@ p{
   border: none;
   font-size: 20px;
   cursor: pointer;
+  color: #d62828;
 }
 
 /* تعداد سبد خرید */
@@ -310,9 +313,11 @@ p{
 /* متن خالی بودن سبد */
 #cartItems p {
   text-align: center;
-  color: gray;
+  color: rgb(61, 61, 61);
   font-size: 15px;
   margin-top: 20px;
 }
+
+
 
 

@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const productName = nameElement.textContent.trim().toLowerCase();
       
       if (productName.includes(searchValue)) {
-        card.style.display = "flex"; // یا block بسته به استایل کارت
+        card.style.display = "grid"; // یا block بسته به استایل کارت
       } else {
         card.style.display = "none";
       }
