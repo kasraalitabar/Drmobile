@@ -4,6 +4,7 @@ const root = document.getElementById("productDetail");
 // تعیین فیلد اضافه (پارت نامبر یا سایز) بر اساس نوع محصول
 let extraField = "";
 
+
 if (data?.type === "watch") {
   extraField = `
     <label>سایز:</label>
@@ -11,7 +12,7 @@ if (data?.type === "watch") {
       ${data.sizeOptions.map(size => `<option>${size}</option>`).join("")}
     </select>
   `;
-} else {
+} else if (data?.type === "phone") {
   extraField = `
     <label>پارت نامبر :</label>
     <input list="partOptions" id="partNumberSelect" placeholder=" ZA">
@@ -20,6 +21,8 @@ if (data?.type === "watch") {
       <option value="CH/A دو سیم کارت">
     </datalist>
   `;
+} else {
+  extraField = ""; // مثلا برای AirPods هیچ چیز اضافه نمایش داده نشه
 }
 
 // نمایش محصول
