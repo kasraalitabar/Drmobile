@@ -111,10 +111,17 @@ button{
   border-radius: 20px;
   width: 200px;
   height: 50px;
+  margin-bottom: 2rem;
 }
 #partNumberSelect{
   border-radius: 5px;
-  width: 50px;
+  width: 100px;
+  border: 0;
+}
+#partNumberSelects{
+  border-radius: 5px;
+  width: 100px;
+  border: 0;
 }
 
 .thumbnail-gallery {
@@ -172,3 +179,38 @@ button{
   90% { opacity: 1; transform: translateY(0); }
   100% { opacity: 0; transform: translateY(-10px); }
 }
+
+.des{
+  background-color: #ececec;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  border-radius: 30px;
+}
+
+footer{
+        background-color: rgb(247, 247, 247);
+    }
+    .fall{
+        margin-top: 5rem;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+    }
+    .rights{
+        margin-right: 5rem;
+        margin-top: 3rem;
+        width: 100px;
+        margin-bottom: 5rem;
+    }
+    .left{
+        margin-top: 3rem;
+        margin-bottom: 5rem;
+    }
+    .parag{
+      line-height: 30px;
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
