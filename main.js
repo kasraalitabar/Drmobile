@@ -73,19 +73,20 @@ function renderCartModal() {
   }
 
   container.innerHTML = cart.map((item, index) => `
-    <div class="flex items-center justify-between bg-gray-100 p-4 rounded-lg shadow-sm">
-      <div class="flex items-center gap-3">
-        <img src="${item.image}" width="60" class="rounded-md border" />
-        <div>
-          <h4 class="font-semibold">${item.name}</h4>
-          <p class="text-sm text-gray-600">رنگ: <span class="text-black">${item.color}</span></p>
-          <p class="text-sm text-gray-600">پارت نامبر: <span class="text-black">${item.partNumber}</span></p>
-          <p class="text-sm text-gray-600">تعداد: ${item.quantity}</p>
-          <p class="text-sm font-bold text-blue-600">قیمت: ${item.price.toLocaleString()} تومان</p>
-        </div>
-      </div>
-      <button onclick="removeFromCart(${index})" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition">حذف</button>
+    <div class="cart-item">
+  <div class="cart-item-info">
+    <img src="${item.image}" alt="${item.name}">
+    <div class="cart-item-details">
+      <h4>${item.name}</h4>
+      <p>رنگ: <span>${item.color}</span></p>
+      <p>پارت نامبر: <span>${item.partNumber}</span></p>
+      <p>تعداد: <span>${item.quantity}</span></p>
+      <p class="price">قیمت: ${item.price.toLocaleString()} تومان</p>
     </div>
+  </div>
+  <button class="delete-btn" onclick="removeFromCart(${index})">حذف</button>
+</div>
+
   `).join("");
 }
 function updateCartCount() {
