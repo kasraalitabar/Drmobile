@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>پنل مدیریت</title>
+  <script src="admin.js"></script>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    input, textarea { display: block; margin-bottom: 10px; width: 300px; }
+  </style>
+</head>
+<body>
+
+  <h2>افزودن محصول جدید</h2>
+
+  <form id="upload-form" enctype="multipart/form-data">
+    <label>عکس محصول:</label>
+    <input type="file" id="image" name="image" required>
+    <button type="submit">آپلود عکس</button>
+  </form>
+
+  <img id="preview" src="" width="150" style="margin: 10px 0;" />
+
+  <form id="product-form">
+    <label>عنوان:</label>
+    <input type="text" id="title" required>
+
+    <label>قیمت:</label>
+    <input type="number" id="price" required>
+
+    <label>توضیحات:</label>
+    <textarea id="description" rows="3"></textarea>
+
+    <label>برند:</label>
+    <input type="text" id="brand">
+
+    <button type="submit">ثبت محصول</button>
+  </form>
+
+  <p id="msg"></p>
+
+  <script src="admin.js"></script>
+
+</body>
+</html>
